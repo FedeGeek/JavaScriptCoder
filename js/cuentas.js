@@ -1,6 +1,6 @@
 class Cuenta {
     
-    constructor(nombre_cuenta, cuenta_ingreso, saldo_inicial, saldos_mensuales) {
+    constructor(nombre_cuenta, cuenta_ingreso, saldo_inicial, saldos_mensuales, saldo_final) {
         this.nombre_cuenta = nombre_cuenta;
         this.cuenta_ingreso = cuenta_ingreso;
         this.saldo_inicial = saldo_inicial;
@@ -9,10 +9,12 @@ class Cuenta {
     }
     
     _cargar_saldos(meses){
-        for(i=1;i<=meses.length;i++){
+        this.saldo_final = 0;
+        for(i=0;i<meses.length;i++){
             do{
-                this.saldos_mensuales[i] = parseFloat(+prompt('Por favor, indica el saldo total de la cuenta '+ this.nombre_cuenta + ' para el mes de ' + meses[i]));
-            } while(isNaN(saldos_mensuales[i]));
+                this.saldos_mensuales[i] = parseFloat(prompt('Por favor, indica el saldo total de la cuenta '+ this.nombre_cuenta + ' para el mes de ' + meses[i]));
+            } while(isNaN(this.saldos_mensuales[i]));
+            this.saldo_final += this.saldos_mensuales[i];
         }
     }
 
@@ -38,7 +40,7 @@ class Caja {
     _cargar_saldo_inicial(){
         do{
             this.saldo_inicial = parseFloat(+prompt('Por favor, ingresa el saldo inicial de la cuenta '+ this.nombre_cuenta))
-        } while(isNaN(this.saldo_final));
+        } while(isNaN(this.saldo_inicial));
     }
 
     _cargar_saldos(manual_cuentas,meses){
