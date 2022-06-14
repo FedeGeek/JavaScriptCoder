@@ -1,8 +1,8 @@
 class Cuenta {
     
-    constructor(nombre_cuenta, cuenta_ingreso, saldo_final = 0,saldos_mensuales = []) {
+    constructor(nombre_cuenta, ingresos, saldo_final = 0,saldos_mensuales = []) {
         this.nombre_cuenta = nombre_cuenta;
-        this.cuenta_ingreso = cuenta_ingreso;
+        this.ingresos = ingresos;
         this.saldo_final = saldo_final;
         this.saldos_mensuales = saldos_mensuales;
     }
