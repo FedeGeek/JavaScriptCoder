@@ -27,9 +27,12 @@ generar_manual_cuentas(manual_cuentas,egresos);
 
 
 caja._cargar_saldo_inicial();
-console.log(caja.saldo_inicial);
 cargar_saldos_cuentas(manual_cuentas,meses);
 
 /*
 alert('Ahora, el programa generará el Estado de Resultados y el flujo de caja');
 */
+
+generar_ganancia_bruta(ingresos,egresos);
+generar_gastos_operativos(egresos);
+generar_ibt_iat(ingresos);
