@@ -5,10 +5,11 @@ function cargar_saldos_cuentas(manual_cuentas,meses){
 }
 //Generar manual de cuentas
 
-function generar_manual_cuentas(manual_cuentas,array){
-    for (i=0;i<array.length;i++){
+function generar_manual_cuentas(manual_cuentas,array1,array2){
+    for (i=0;i<array1.length;i++){
         manual_cuentas.push(array[i]);
     }
+    
 }
 
 //Generar Estado de Resultados
