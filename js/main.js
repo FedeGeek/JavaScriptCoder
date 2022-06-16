@@ -10,6 +10,7 @@ alert('Este proyecto se encuentra en estado alpha, lo que significa que aún est
 alert('Para empezar, vamos a asignar el saldo inicial de tu caja y los saldos mensuales de las cuentas');
 */
 
+//Generación de cuentas
 const caja = new Caja();
 const ventas = new Cuenta('Ventas', true);
 const cmv = new Cuenta('Costo de ventas', false);
@@ -17,9 +18,16 @@ const impuestos = new Cuenta('Impuestos', false);
 const otros_ingresos = new Cuenta('Otros ingresos', true);
 const sga = new Cuenta('Otros gastos', false);
 
-const manual_cuentas = [ventas, cmv, impuestos, otros_ingresos, sga];
+const ingresos = [ventas, otros_ingresos];
+const egresos = [cmv, impuestos, sga];
+const manual_cuentas = [];
+
+generar_manual_cuentas(manual_cuentas,ingresos);
+generar_manual_cuentas(manual_cuentas,egresos);
+
 
 caja._cargar_saldo_inicial();
+console.log(caja.saldo_inicial);
 cargar_saldos_cuentas(manual_cuentas,meses);
 
 /*
