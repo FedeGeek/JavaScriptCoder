@@ -23,7 +23,7 @@ td_totales.setAttribute('id','totales_cuentas');
 tr_meses.appendChild(td_totales);
 
 //Generación de cuentas
-const caja = new Caja();
+const caja = new Caja(0,0,0);
 const ventas = new Cuenta('Ventas', true);
 const cmv = new Cuenta('Costo de ventas', false);
 const impuestos = new Cuenta('Impuestos', false);

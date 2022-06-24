@@ -36,9 +36,8 @@ class Caja {
 
 
     _cargar_saldo_inicial(){
-        do{
-            this.saldo_inicial = parseFloat(+prompt('Por favor, ingresa el saldo inicial de la cuenta '+ this.nombre_cuenta))
-        } while(isNaN(this.saldo_inicial) || this.saldo_inicial <= 0);
+        let saldo_inicial_caja = document.getElementById('saldo_inicial_caja');
+        this.saldo_inicial = parseFloat(saldo_inicial_caja.value);
     }
 
     _cargar_saldos(manual_cuentas,meses){
