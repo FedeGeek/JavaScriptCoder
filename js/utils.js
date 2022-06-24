@@ -1,3 +1,14 @@
+function update_headers(){
+    for(let i=0; i<meses.length;i++){
+        let td = document.getElementById('ppto_mes_'+i);
+        if(mes_inicial.selectedIndex - 1 + i < meses.length){
+            td.innerText = meses[mes_inicial.selectedIndex - 1 + i];
+        } else {
+            td.innerText = meses[mes_inicial.selectedIndex -13 + i];
+        }
+    }
+}
+
 function cargar_saldos_cuentas(manual_cuentas,meses){
     for (let i=0;i < manual_cuentas.length;i++){
         manual_cuentas[i]._cargar_saldos(meses);

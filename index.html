@@ -8,58 +8,34 @@
     <title>Presupuestador anual</title>
 </head>
 <body>
-    <div id="Estado_de_Resultados">
-        <h2>Estado de Resultados</h2>
-        <div id="d_ganancia_bruta">
-            <h3>Ganancia bruta</h3>
-            <table id="t_ganancia_bruta">
-                <tr id="ventas">
-                    <td id="t_ventas"></td>
-                    <td id="v_ventas"></td>
-                </tr>
-                <tr id="cmv">
-                    <td id="t_cmv"></td>
-                    <td id="v_cmv"></td>
-                </tr>
-                <tr id="ganancia_bruta">
-                    <td id="t_ganancia_bruta">Ingresos por ventas:</td>
-                    <td id="v_ganancia_bruta"></td>
-                </tr>
-            </table>
-        </div>
-        <div id="d_gastos_operativos">
-            <h3>Gastos operativos</h3>
-            <table id="t_gastos_operativos"></table>
-        </div>
-        <div id="d_ibt">
-            <h3>Ganancia bruta</h3>
-            <table id="t_ibt"> 
+    <h1>Presupuestador</h1>
+    <div id="d_caja">
+        <h2>Patrimonio inicial</h2>
+        <table>
+            <tbody>
                 <tr>
-                    <td>Otros ingresos</td>
-                    <td id="v_otros_ingresos"></td>
+                    <td>Caja inicial</td>
+                    <td>
+                        <textarea name="saldo_inicial_caja" id="saldo_inicial_caja" cols="10" rows="1" placeholder="efectivo inicial"></textarea>
+                    </td>
                 </tr>
-                <tr>
-                    <td>Total ingresos antes de impuestos:</td>
-                    <td id="ibt"></td>
-                </tr>
-                <tr>
-                    <td>Impuestos:</td>
-                    <td id="v_impuesto_ganancias"></td>
-                </tr>
-            </table>
-        </div>
-        <div id="iat">
-            <h3>Ganancia neta</h3>
-            <table id="iat">
-                <tr>
-                    <td>Ingresos netos</td>
-                    <td id="v_iat"></td>
-                </tr>
-
-            </table>
-        </div>
+            </tbody>
+        </table>
     </div>
-    <div id="Flujo_de_Caja"></div>
+    <div>
+        <h3>Mes inicial </h3>
+        <select name="ppto_mes_0" id="mes_inicial" onchange="update_headers()" style="width: 150px">
+            <option>Seleccionar</option>
+        </select>
+        <h2>Presupuesto anual</h2>
+        <table>
+            <thead>
+                <tr id="tr_meses">
+                    <td>Cuentas</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
     <script src="js/class.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/main.js"></script>
