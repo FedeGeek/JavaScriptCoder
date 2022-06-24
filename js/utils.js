@@ -7,6 +7,8 @@ function update_headers(){
             td.innerText = meses[mes_inicial.selectedIndex -13 + i];
         }
     }
+    let td = document.getElementById('totales_cuentas');
+    td.innerText = 'Totales';
 }
 
 function cargar_saldos_cuentas(manual_cuentas,meses){
