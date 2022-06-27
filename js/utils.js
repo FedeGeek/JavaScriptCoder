@@ -1,16 +1,51 @@
+//Actualizar encabezados tabla Ppto
 function update_headers(){
     for(let i=0; i<meses.length;i++){
         let td = document.getElementById('ppto_mes_'+i);
         if(mes_inicial.selectedIndex - 1 + i < meses.length){
             td.innerText = meses[mes_inicial.selectedIndex - 1 + i];
         } else {
-            td.innerText = meses[mes_inicial.selectedIndex -13 + i];
+            td.innerText = meses[mes_inicial.selectedIndex - (meses.length + 1) + i];
         }
     }
     let td = document.getElementById('totales_cuentas');
     td.innerText = 'Totales';
 }
 
+/*Cargar cuentas a tabla de Ppto: La funcion itera por el manual de cuentas y por cada cuenta ingresa una fila nueva a la tabla.
+Cada fila contiene el nombre de la cuenta y los campos para ingresar el saldo mensual de la cuenta, y un campo calculado con el total mensual
+El Total mensual se actualiza de forma automatica*/
+
+function cargar_cuentas_ppto(cuentas){
+    const tabla = document.getElementById('body_ppto');
+    cuentas.forEach(cuenta => {
+        let fila = document.createElement('tr');
+        fila.setAttribute('id',cuenta.nombre_cuenta);
+        let encabezado = document.createElement('td');
+        encabezado.setAttribute('id','encabezado_'+cuenta.nombre_cuenta);
+        encabezado.innerText = cuenta.nombre_cuenta2ae9;
+        fila.appendChild(encabezado);
+        tabla.appendChild(fila);
+    });
+    const filas = tabla.children;
+    const columnas =  document.getElementById('tr_meses').children;
+    for(i=0;i<filas.length;i++){
+        let fila = filas[i];
+        for(j=1;j<columnas.length;j++){
+            let celda = document.createElement('td');
+            let campo = document.createElement('input');
+            campo.setAttribute('id','saldo_'+ fila.id + '_' + columnas[j].id);
+            campo.setAttribute('type','number');
+            campo.setAttribute('cols',5);
+            campo.setAttribute('rows',1);
+            celda.appendChild(campo);
+            fila.appendChild(celda);
+        }
+    }
+    console.log(tabla);
+}
+
+//Cargar saldos a cuentas --> Revisar
 function cargar_saldos_cuentas(manual_cuentas,meses){
     for (let i=0;i < manual_cuentas.length;i++){
         manual_cuentas[i]._cargar_saldos(meses);
@@ -23,7 +58,6 @@ function generar_manual_cuentas(manual_cuentas,array){
         manual_cuentas.push(array[i]);
     }
 }
-
 //Funciones para generar el Estado de Resultados
 
 function generar_ganancia_bruta(ingresos,egresos){
@@ -74,6 +108,7 @@ function generar_ibt_iat(ingresos){
     v_impuesto_ganancias.innerHTML = impuesto_ganancias;
     v_iat.innerHTML = Math.round(ibt - impuesto_ganancias); 
 }
+
 
 
 //Generar Flujo de caja 
