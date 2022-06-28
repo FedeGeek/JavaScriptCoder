@@ -22,9 +22,9 @@
             </tbody>
         </table>
     </div>
-    <div>
+    <div id="ppto">
         <h3>Mes inicial </h3>
-        <select name="ppto_mes_0" id="mes_inicial" onchange="update_headers()" style="width: 150px">
+        <select name="ppto_mes_0" id="mes_inicial" onchange="update_headers(), cargar_cuentas_ppto(manual_cuentas)" style="width: 150px">
             <option>Seleccionar</option>
         </select>
         <h2>Presupuesto anual</h2>

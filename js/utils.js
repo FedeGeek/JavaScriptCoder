@@ -23,7 +23,7 @@ function cargar_cuentas_ppto(cuentas){
         fila.setAttribute('id',cuenta.nombre_cuenta);
         let encabezado = document.createElement('td');
         encabezado.setAttribute('id','encabezado_'+cuenta.nombre_cuenta);
-        encabezado.innerText = cuenta.nombre_cuenta2ae9;
+        encabezado.innerText = cuenta.nombre_cuenta;
         fila.appendChild(encabezado);
         tabla.appendChild(fila);
     });
@@ -42,7 +42,6 @@ function cargar_cuentas_ppto(cuentas){
             fila.appendChild(celda);
         }
     }
-    console.log(tabla);
 }
 
 //Cargar saldos a cuentas --> Revisar

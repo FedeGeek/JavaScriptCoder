@@ -32,7 +32,7 @@ const sga = new Cuenta('Otros gastos', false);
 
 const ingresos = [ventas, otros_ingresos];
 const egresos = [cmv, impuestos, sga];
-const manual_cuentas = [];
+const manual_cuentas = [...ingresos, ...egresos];
 /*
 generar_manual_cuentas(manual_cuentas,ingresos);
 generar_manual_cuentas(manual_cuentas,egresos);
