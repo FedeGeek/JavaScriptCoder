@@ -7,6 +7,7 @@ function update_headers(){
         } else {
             td.innerText = meses[mes_inicial.selectedIndex - (meses.length + 1) + i];
         }
+        td.setAttribute('id',meses[i]);
     }
     let td = document.getElementById('totales_cuentas');
     td.innerText = 'Totales';
@@ -34,15 +35,24 @@ function cargar_cuentas_ppto(cuentas){
         for(j=1;j<columnas.length;j++){
             let celda = document.createElement('td');
             let campo = document.createElement('input');
+            if(columnas[j].id!='totales_cuentas'){
             campo.setAttribute('id','saldo_'+ fila.id + '_' + columnas[j].id);
             campo.setAttribute('type','number');
             campo.setAttribute('cols',5);
             campo.setAttribute('rows',1);
+            campo.setAttribute('onchange','update_total_ppto('+ fila.id +')');
             celda.appendChild(campo);
             fila.appendChild(celda);
+            }else{                
+            fila.appendChild(celda);
+            celda.setAttribute('id','Total_'+ fila.id);
+            }
         }
     }
 }
+
+//Actualizar totales de cuentas ppto: Esta es la función que se inserta como valor del atributo onchange en los campos del ppto
+
 
 //Cargar saldos a cuentas --> Revisar
 function cargar_saldos_cuentas(manual_cuentas,meses){
