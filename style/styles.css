@@ -1,3 +1,11 @@
-td {
-    border:solid;
+table#t_ppto{
+    width: 100%;
+    white-space:nowrap;
+}
+input{
+    border:none;
+}
+td{
+    max-width: fit-content;
+    border:1px solid;
 }

@@ -4,10 +4,11 @@ function update_headers(){
         let td = document.getElementById('ppto_mes_'+i);
         if(mes_inicial.selectedIndex - 1 + i < meses.length){
             td.innerText = meses[mes_inicial.selectedIndex - 1 + i];
+            td.setAttribute('id',meses[mes_inicial.selectedIndex -1 + i]);
         } else {
             td.innerText = meses[mes_inicial.selectedIndex - (meses.length + 1) + i];
+            td.setAttribute('id',meses[mes_inicial.selectedIndex - (meses.length + 1)]);
         }
-        td.setAttribute('id',meses[i]);
     }
     let td = document.getElementById('totales_cuentas');
     td.innerText = 'Totales';
@@ -36,11 +37,12 @@ function cargar_cuentas_ppto(cuentas){
             let celda = document.createElement('td');
             let campo = document.createElement('input');
             if(columnas[j].id!='totales_cuentas'){
+            celda.setAttribute('id',fila.id +'_' + columnas[j].id);
             campo.setAttribute('id','saldo_'+ fila.id + '_' + columnas[j].id);
             campo.setAttribute('type','number');
-            campo.setAttribute('cols',5);
             campo.setAttribute('rows',1);
-            campo.setAttribute('onchange','update_total_ppto('+ fila.id +')');
+            campo.setAttribute('onchange','update_totals("'+fila.id+'")');
+            campo.setAttribute('value',0.00);
             celda.appendChild(campo);
             fila.appendChild(celda);
             }else{                
@@ -51,8 +53,25 @@ function cargar_cuentas_ppto(cuentas){
     }
 }
 
-//Actualizar totales de cuentas ppto: Esta es la función que se inserta como valor del atributo onchange en los campos del ppto
-
+function update_totals(cuenta){
+    const fila = document.getElementById(cuenta);
+    const td_total = fila.lastChild;
+    let saldos = [];
+    function sum (a,b){
+        a = parseFloat(a);
+        b = parseFloat(b);
+        return a+b;
+    }
+    for (i=1;i<fila.childElementCount-1;i++){
+        let valor = fila.children[i].firstChild.value;
+        (isNaN(valor) || valor=='')?valor = 0:{};
+        valor = parseFloat(valor).toFixed(2);
+        fila.children[i].firstChild.value = valor;
+        saldos.push(valor);
+    };
+    td_total.innerHTML = saldos.reduce(sum);
+    console.log(td_total.innerHTML);
+}
 
 //Cargar saldos a cuentas --> Revisar
 function cargar_saldos_cuentas(manual_cuentas,meses){
