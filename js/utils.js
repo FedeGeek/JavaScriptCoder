@@ -4,10 +4,10 @@ function update_headers(){
         let td = document.getElementById('ppto_mes_'+i);
         if(mes_inicial.selectedIndex - 1 + i < meses.length){
             td.innerText = meses[mes_inicial.selectedIndex - 1 + i];
-            td.setAttribute('id',meses[mes_inicial.selectedIndex -1 + i]);
+            //td.setAttribute('id',meses[mes_inicial.selectedIndex -1 + i]);
         } else {
             td.innerText = meses[mes_inicial.selectedIndex - (meses.length + 1) + i];
-            td.setAttribute('id',meses[mes_inicial.selectedIndex - (meses.length + 1)]);
+            //td.setAttribute('id',meses[mes_inicial.selectedIndex - (meses.length + 1)]);
         }
     }
     let td = document.getElementById('totales_cuentas');
@@ -73,6 +73,24 @@ function update_totals(cuenta){
     console.log(td_total.innerHTML);
 }
 
+//----------------------------------------------TERMINAR ESTA PARTE----------------------------------------------------------------
+function guardar_saldos(Fila,Meses){
+    let fila = document.getElementById(Fila);
+    let meses = document.getElementById(Meses);
+    let montos = [];
+    let saldos = {};
+    let nombre_cuenta = fila.children[0].innerHTML;
+    for (let i=1;i<fila.children.length-1;i++){
+        montos.push(fila.children[i].firstChild.value);
+    }
+    for(let i=1;i<meses.children.length-1;i++){
+        saldos[meses.children[i].innerHTML] = montos[i-1];
+    }    
+    let saldosJSON = JSON.stringify(saldos);
+    localStorage.setItem(nombre_cuenta,saldosJSON);
+    return saldosJSON;
+}
+//-----------------------------------------------------------------------------------------------------------------------------
 //Cargar saldos a cuentas --> Revisar
 function cargar_saldos_cuentas(manual_cuentas,meses){
     for (let i=0;i < manual_cuentas.length;i++){
