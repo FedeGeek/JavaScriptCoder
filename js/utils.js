@@ -15,8 +15,8 @@ function update_headers(){
 }
 
 /*Cargar cuentas a tabla de Ppto: La funcion itera por el manual de cuentas y por cada cuenta ingresa una fila nueva a la tabla.
-Cada fila contiene el nombre de la cuenta y los campos para ingresar el saldo mensual de la cuenta, y un campo calculado con el total mensual
-El Total mensual se actualiza de forma automatica*/
+Cada fila contiene el nombre de la cuenta y los campos para ingresar el saldo mensual de la cuenta, y un campo calculado con el total de la cuenta
+El total se actualiza de forma automatica*/
 
 function cargar_cuentas_ppto(cuentas){
     const tabla = document.getElementById('body_ppto');
@@ -73,13 +73,14 @@ function update_totals(cuenta){
     console.log(td_total.innerHTML);
 }
 
-//----------------------------------------------TERMINAR ESTA PARTE----------------------------------------------------------------
-function guardar_saldos(Fila,Meses){
-    let fila = document.getElementById(Fila);
-    let meses = document.getElementById(Meses);
+//Convertir Saldos de cada cuenta a JSON
+function guardar_saldos(nombreCuenta){
+    let fila = document.getElementById(nombreCuenta);
+    let meses = document.getElementById('tr_meses');
     let montos = [];
     let saldos = {};
-    let nombre_cuenta = fila.children[0].innerHTML;
+    //let nombre_cuenta = fila.children[0].innerHTML;
+    //saldos['Cuenta'] = nombre_cuenta
     for (let i=1;i<fila.children.length-1;i++){
         montos.push(fila.children[i].firstChild.value);
     }
@@ -87,10 +88,42 @@ function guardar_saldos(Fila,Meses){
         saldos[meses.children[i].innerHTML] = montos[i-1];
     }    
     let saldosJSON = JSON.stringify(saldos);
-    localStorage.setItem(nombre_cuenta,saldosJSON);
     return saldosJSON;
 }
-//-----------------------------------------------------------------------------------------------------------------------------
+
+//Guardar ppto en local Storage
+function guardar_ppto(cuentas){
+    let ppto = {};
+    cuentas.forEach(cuenta => {
+        let nombre_cuenta = cuenta.nombre_cuenta;
+        console.log(String(nombre_cuenta));
+        let saldos_cuenta = guardar_saldos(String(nombre_cuenta));
+        ppto[nombre_cuenta] = saldos_cuenta;    
+    });
+    let nombre_ppto = String(prompt('Por favor, ingresa un nombre para el presupuesto (ej: "Ppto 2022 V_1")'));
+    let pptoJSON = JSON.stringify(ppto);
+    localStorage.setItem(String(nombre_ppto),pptoJSON);
+    alert('El presupuesto se ha guardado en tu PC bajo el nombre de "'+nombre_ppto+'"');
+}
+
+function cargar_ppto(){
+    let nombre_ppto = String(prompt('Por favor, ingresa el nombre del presupuesto a cargar'));
+    let ppto = localStorage.getItem(nombre_ppto);
+    if(ppto == null){
+        alert('El presupuesto solicitado no se encuentra almacenado, por favor, intente nuevamente');
+        cargar_ppto();
+    }else{
+        ppto = JSON.parse(ppto);
+        let cuentas = keys(ppto);
+        let meses = keys(JSON.parse(ppto[cuentas[0]]));
+        document.getElementById('mes_inicial').value = meses[0];
+        update_headers();
+        cuentas.forEach(cuenta => {
+           console.log(JSON.parse(ppto[cuenta]));
+         });
+    }
+}
+
 //Cargar saldos a cuentas --> Revisar
 function cargar_saldos_cuentas(manual_cuentas,meses){
     for (let i=0;i < manual_cuentas.length;i++){
@@ -106,7 +139,7 @@ function generar_manual_cuentas(manual_cuentas,array){
 }
 //Funciones para generar el Estado de Resultados
 
-function generar_ganancia_bruta(ingresos,egresos){
+function generar_manual_cuentas(manual_cuentas,array){
     const t_ventas = document.getElementById('t_ventas');
     const v_ventas = document.getElementById('v_ventas');
     const t_cmv = document.getElementById('t_cmv');
