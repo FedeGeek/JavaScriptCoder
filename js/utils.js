@@ -62,15 +62,14 @@ function update_totals(cuenta){
         b = parseFloat(b);
         return a+b;
     }
-    for (i=1;i<fila.childElementCount-1;i++){
-        let valor = fila.children[i].firstChild.value;
+    for (k=1;k<fila.childElementCount-1;k++){
+        let valor = fila.children[k].firstChild.value;
         (isNaN(valor) || valor=='')?valor = 0:{};
         valor = parseFloat(valor).toFixed(2);
-        fila.children[i].firstChild.value = valor;
+        fila.children[k].firstChild.value = valor;
         saldos.push(valor);
     };
     td_total.innerHTML = saldos.reduce(sum);
-    console.log(td_total.innerHTML);
 }
 
 //Convertir Saldos de cada cuenta a JSON
@@ -106,6 +105,7 @@ function guardar_ppto(cuentas){
     alert('El presupuesto se ha guardado en tu PC bajo el nombre de "'+nombre_ppto+'"');
 }
 
+//Cargar ppto guardado
 function cargar_ppto(){
     let nombre_ppto = String(prompt('Por favor, ingresa el nombre del presupuesto a cargar'));
     let ppto = localStorage.getItem(nombre_ppto);
@@ -114,13 +114,44 @@ function cargar_ppto(){
         cargar_ppto();
     }else{
         ppto = JSON.parse(ppto);
-        let cuentas = keys(ppto);
-        let meses = keys(JSON.parse(ppto[cuentas[0]]));
+        let cuentas = Object.keys(ppto);
+        let meses = Object.keys(JSON.parse(ppto[cuentas[0]]));
+        const tabla = document.getElementById('body_ppto');
         document.getElementById('mes_inicial').value = meses[0];
         update_headers();
         cuentas.forEach(cuenta => {
-           console.log(JSON.parse(ppto[cuenta]));
-         });
+            let fila = document.createElement('tr');
+            let encabezado = document.createElement('td');
+            fila.setAttribute('id',cuenta);
+            encabezado.setAttribute('id','encabezado_' + cuenta);
+            encabezado.innerText = cuenta;
+            fila.appendChild(encabezado);
+            tabla.appendChild(fila);
+        });
+        const filas = tabla.children;
+        const columnas = document.getElementById('tr_meses').children;
+        for(i=0;i<filas.length;i++){
+            let saldos = JSON.parse(ppto[filas[i].firstChild.innerHTML]);
+            for(j=1;j<columnas.length;j++){
+                let celda = document.createElement('td');
+                let campo = document.createElement('input');
+                if(columnas[j].id!='totales_cuentas'){
+                    let mes = (columnas[j].innerHTML);
+                    celda.setAttribute('id',filas[i].id +'_' + columnas[j].id);
+                    campo.setAttribute('id','saldo_'+ filas[i].id + '_' + columnas[j].id);
+                    campo.setAttribute('type','number');
+                    campo.setAttribute('rows',1);
+                    campo.setAttribute('onchange','update_totals("'+filas[i].id+'")');
+                    campo.setAttribute('value',saldos[mes]);
+                    celda.appendChild(campo);
+                    filas[i].appendChild(celda);
+                }else{                
+                    filas[i].appendChild(celda);
+                    celda.setAttribute('id','Total_'+ filas[i].id);
+                }
+            }
+            update_totals(filas[i].id);
+        }
     }
 }
 
