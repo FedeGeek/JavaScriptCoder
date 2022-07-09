@@ -1,5 +1,18 @@
-const versionApp = 0.3
-const meses = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+const versionApp = 0.3;
+const meses = [
+  "Enero",
+  "Febrero",
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septiembre",
+  "Octubre",
+  "Noviembre",
+  "Diciembre",
+];
 
 /*
 alert('Bienvenid@ al presupuestador online, Version '+ versionApp);
@@ -8,27 +21,27 @@ alert('Este proyecto se encuentra en estado alpha, lo que significa que aún est
 */
 
 //Asignación de meses en ppto
-const mes_inicial = document.getElementById('mes_inicial');
-for (let i=0;i<meses.length;i++){
-    let option = document.createElement('option');
-    let tr_meses = document.getElementById('tr_meses');
-    option.innerText = meses[i];
-    mes_inicial.appendChild(option);
-    let td = document.createElement('td');
-    td.setAttribute('id','ppto_mes_'+i);
-    tr_meses.appendChild(td);
+const mes_inicial = document.getElementById("mes_inicial");
+for (let i = 0; i < meses.length; i++) {
+  let option = document.createElement("option");
+  let tr_meses = document.getElementById("tr_meses");
+  option.innerText = meses[i];
+  mes_inicial.appendChild(option);
+  let td = document.createElement("td");
+  td.setAttribute("id", "ppto_mes_" + i);
+  tr_meses.appendChild(td);
 }
-const td_totales = document.createElement('td');
-td_totales.setAttribute('id','totales_cuentas');
+const td_totales = document.createElement("td");
+td_totales.setAttribute("id", "totales_cuentas");
 tr_meses.appendChild(td_totales);
 
 //Generación de cuentas
-const caja = new Caja(0,0,0);
-const ventas = new Cuenta('Ventas', true);
-const cmv = new Cuenta('Costo de ventas', false);
-const impuestos = new Cuenta('Impuestos', false);
-const otros_ingresos = new Cuenta('Otros ingresos', true);
-const sga = new Cuenta('Otros gastos', false);
+const caja = new Caja(0, 0, 0);
+const ventas = new Cuenta("Ventas", true);
+const cmv = new Cuenta("Costo de ventas", false);
+const impuestos = new Cuenta("Impuestos", false);
+const otros_ingresos = new Cuenta("Otros ingresos", true);
+const sga = new Cuenta("Otros gastos", false);
 
 const ingresos = [ventas, otros_ingresos];
 const egresos = [cmv, impuestos, sga];
@@ -49,3 +62,4 @@ generar_ganancia_bruta(ingresos,egresos);
 generar_gastos_operativos(egresos);
 generar_ibt_iat(ingresos);
 */
+
