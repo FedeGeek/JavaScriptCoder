@@ -1,4 +1,4 @@
-const versionApp = 0.3;
+const versionApp = "Alpha 0.4";
 const meses = [
   "Enero",
   "Febrero",
@@ -14,11 +14,10 @@ const meses = [
   "Diciembre",
 ];
 
-/*
-alert('Bienvenid@ al presupuestador online, Version '+ versionApp);
-alert('Este programa te permite proyectar los movimientos financieros de tu emprendimiento, para visualizar con facilidad la proyección de tus ganancias, y el cashflow');
-alert('Este proyecto se encuentra en estado alpha, lo que significa que aún está en proceso de desarrollo');
-*/
+swal(
+  "Bienvenid@ al presupuestador online, Version " + versionApp,
+  "Este programa te permite proyectar los movimientos financieros de tu emprendimiento, para visualizar con facilidad la proyección de tus ganancias, y el cashflow"
+);
 
 //Asignación de meses en ppto
 const mes_inicial = document.getElementById("mes_inicial");
@@ -62,4 +61,3 @@ generar_ganancia_bruta(ingresos,egresos);
 generar_gastos_operativos(egresos);
 generar_ibt_iat(ingresos);
 */
-
