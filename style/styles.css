@@ -18,8 +18,13 @@ td{
     border:1px solid;
 }
 table#t_caja_inicial{
-    width: 50%;
+    width: 20%;
     white-space: nowrap;
     padding: none;
     margin: none;
+    border-bottom: 1px solid black;
+    text-align: center;
+}
+table#t_caja_inicial td input{
+    text-align: center;
 }

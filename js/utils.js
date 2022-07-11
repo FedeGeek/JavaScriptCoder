@@ -106,7 +106,7 @@ function guardar_ppto(cuentas) {
   );
   let pptoJSON = JSON.stringify(ppto);
   localStorage.setItem(String(nombre_ppto), pptoJSON);
-  alert(
+  swal(
     'El presupuesto se ha guardado en tu PC bajo el nombre de "' +
       nombre_ppto +
       '"'
@@ -120,7 +120,7 @@ function cargar_ppto() {
   );
   let ppto = localStorage.getItem(nombre_ppto);
   if (ppto == null) {
-    alert(
+    swal(
       "El presupuesto solicitado no se encuentra almacenado, por favor, intente nuevamente"
     );
     cargar_ppto();
@@ -241,4 +241,3 @@ function generar_ibt_iat(ingresos) {
 }
 
 //Generar Flujo de caja
-

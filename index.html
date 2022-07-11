@@ -13,7 +13,7 @@
     <h1>Presupuestador</h1>
     <div id="d_caja">
         <h2>Patrimonio inicial</h2>
-        <table class="table table-bordered" id="t_caja_inicial">
+        <table class="table table-borderless" id="t_caja_inicial">
             <tbody>
                 <tr>
                     <td>Caja inicial</td>
@@ -26,7 +26,7 @@
     </div>
     <div id="ppto">
         <h3>Mes inicial </h3>
-        <select name="ppto_mes_0" id="mes_inicial" onchange="update_headers(), cargar_cuentas_ppto(manual_cuentas)" style="width: 150px">
+        <select name="ppto_mes_0" class="btn btn-secondary" id="mes_inicial" onchange="update_headers(), cargar_cuentas_ppto(manual_cuentas)" style="width: 150px">
             <option>Seleccionar</option>
         </select>
         <h2>Presupuesto anual</h2>
