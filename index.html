@@ -13,7 +13,7 @@
     <h1>Presupuestador</h1>
     <div id="d_caja">
         <h2>Patrimonio inicial</h2>
-        <table >
+        <table class="table table-bordered" id="t_caja_inicial">
             <tbody>
                 <tr>
                     <td>Caja inicial</td>
@@ -30,7 +30,7 @@
             <option>Seleccionar</option>
         </select>
         <h2>Presupuesto anual</h2>
-        <table id="t_ppto">
+        <table class="table table-bordered" id="t_ppto">
             <thead>
                 <tr id="tr_meses">
                     <td style="width:100px">Cuentas</td>
@@ -40,8 +40,8 @@
         </table>
     </div>
     <div>
-        <button onclick="guardar_ppto(manual_cuentas)">Guardar Presupuesto</button>
-        <button onclick="cargar_ppto()">Cargar Presupuesto guardado</button>
+        <button class="btn btn-success" onclick="guardar_ppto(manual_cuentas)">Guardar Presupuesto</button>
+        <button class="btn btn-success" onclick="cargar_ppto()">Cargar Presupuesto guardado</button>
     </div>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>    
     <script src="js/class.js"></script>

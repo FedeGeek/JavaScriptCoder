@@ -1,11 +1,25 @@
+*{
+    padding: 2px;
+}
 table#t_ppto{
-    width: 100%;
+    width: 90%;
     white-space:nowrap;
+    padding: none;
+    margin: none;
+}
+table#t_ppto td input {
+    width: 50px;
 }
 input{
     border:none;
 }
 td{
-    max-width: fit-content;
+    width: fit-content;
     border:1px solid;
+}
+table#t_caja_inicial{
+    width: 50%;
+    white-space: nowrap;
+    padding: none;
+    margin: none;
 }
