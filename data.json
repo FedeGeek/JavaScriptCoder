@@ -1,5 +1,5 @@
-{
-  "pf": {
+  {
+[
     "BNA": {
       "tasa": "53%",
       "link": "https://www.bna.com.ar/AB/AltaProducto/PlazoFijoExterno"
@@ -13,12 +13,12 @@
       "link": "https://www.bbva.com.ar/personas/productos/inversiones/plazos-fijos/online.html"
     },
     "VOII": {
-      "tasa": "54",
+      "tasa": "54%",
       "link": "https://www.bbva.com.ar/personas/productos/inversiones/plazos-fijos/online.html"
     },
     "BTF": {
       "tasa": "50.29%",
       "link": "https://www.btf.com.ar/contacto/solicitud_pf_web/"
     }
+]
   }
-}
