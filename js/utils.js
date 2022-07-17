@@ -66,7 +66,7 @@ function update_totals(cuenta) {
   function sum(a, b) {
     a = parseFloat(a);
     b = parseFloat(b);
-    return a + b;
+    return (a + b).toFixed(2);
   }
   for (k = 1; k < fila.childElementCount - 1; k++) {
     let valor = fila.children[k].firstChild.value;
@@ -99,7 +99,6 @@ function guardar_ppto(cuentas) {
   let ppto = {};
   cuentas.forEach((cuenta) => {
     let nombre_cuenta = cuenta.nombre_cuenta;
-    console.log(String(nombre_cuenta));
     let saldos_cuenta = guardar_saldos(String(nombre_cuenta));
     ppto[nombre_cuenta] = saldos_cuenta;
   });
