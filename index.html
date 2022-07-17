@@ -29,7 +29,7 @@
     </div>
     <div>
         <button class="btn btn-success" onclick="guardar_ppto(manual_cuentas)">Guardar Presupuesto</button>
-        <button class="btn btn-success" onclick="cargar_ppto()">Cargar Presupuesto guardado</button>
+                <button class="btn btn-success" onclick="cargar_ppto(), cargar_saldos_cuentas(manual_cuentas, meses), generar_cf(caja, ingresos, egresos)">Cargar Presupuesto guardado</button>
     </div>
     <br>
     <br>
@@ -56,19 +56,19 @@
                 <tr id="cf_Caja_inicial">
                     <td>Caja inicial</td>
                     <td id="caja_inicial_0">
-                        <input type="number" id="saldo_inicial_caja" cols="10" rows="1" placeholder="efectivo inicial" onchange="caja._cargar_saldo_inicial()"></input>
+                        <input type="number" id="saldo_inicial_caja" cols="10" rows="1" placeholder="efectivo inicial" onchange="caja._cargar_saldo_inicial(), cargar_saldos_cuentas(manual_cuentas, meses), generar_cf(caja, ingresos, egresos)" class="saldo"></input>
                     </td>
-                    <td id="caja_inicial_1"></td>
-                    <td id="caja_inicial_2"></td>
-                    <td id="caja_inicial_3"></td>
-                    <td id="caja_inicial_4"></td>
-                    <td id="caja_inicial_5"></td>
-                    <td id="caja_inicial_6"></td>
-                    <td id="caja_inicial_7"></td>
-                    <td id="caja_inicial_8"></td>
-                    <td id="caja_inicial_9"></td>
-                    <td id="caja_inicial_10"></td>
-                    <td id="caja_inicial_11"></td>
+                    <td id="caja_inicial_1" class="saldo"></td>
+                    <td id="caja_inicial_2" class="saldo"></td>
+                    <td id="caja_inicial_3"class="saldo"></td>
+                    <td id="caja_inicial_4"class="saldo"></td>
+                    <td id="caja_inicial_5"class="saldo"></td>
+                    <td id="caja_inicial_6"class="saldo"></td>
+                    <td id="caja_inicial_7"class="saldo"></td>
+                    <td id="caja_inicial_8"class="saldo"></td>
+                    <td id="caja_inicial_9"class="saldo"></td>
+                    <td id="caja_inicial_10"class="saldo"></td>
+                    <td id="caja_inicial_11"class="saldo"></td>
                 </tr>
                  <tr id="cf_ingresos">
                     <td>Ingresos</td>
@@ -102,18 +102,18 @@
                 </tr>
                 <tr id="cf_saldos">
                     <td>Caja final</td>
-                    <td id="saldos_mes_0"></td>
-                    <td id="saldos_mes_1"></td>
-                    <td id="saldos_mes_2"></td>
-                    <td id="saldos_mes_3"></td>
-                    <td id="saldos_mes_4"></td>
-                    <td id="saldos_mes_5"></td>
-                    <td id="saldos_mes_6"></td>
-                    <td id="saldos_mes_7"></td>
-                    <td id="saldos_mes_8"></td>
-                    <td id="saldos_mes_9"></td>
-                    <td id="saldos_mes_10"></td>
-                    <td id="saldos_mes_11"></td>
+                    <td id="saldos_mes_0"class="saldo"></td>
+                    <td id="saldos_mes_1"class="saldo"></td>
+                    <td id="saldos_mes_2"class="saldo"></td>
+                    <td id="saldos_mes_3"class="saldo"></td>
+                    <td id="saldos_mes_4"class="saldo"></td>
+                    <td id="saldos_mes_5"class="saldo"></td>
+                    <td id="saldos_mes_6"class="saldo"></td>
+                    <td id="saldos_mes_7"class="saldo"></td>
+                    <td id="saldos_mes_8"class="saldo"></td>
+                    <td id="saldos_mes_9"class="saldo"></td>
+                    <td id="saldos_mes_10"class="saldo"></td>
+                    <td id="saldos_mes_11"class="saldo"></td>
                 </tr>
             </tbody>
         </table>

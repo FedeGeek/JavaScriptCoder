@@ -1,4 +1,4 @@
-const versionApp = "Alpha 0.4";
+const versionApp = "Alpha 0.5";
 const meses = [
   "Enero",
   "Febrero",

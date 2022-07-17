@@ -49,7 +49,7 @@ function cargar_cuentas_ppto(cuentas) {
           'update_totals("' +
             fila.id +
             '"), ' +
-            "cargar_saldos_cuentas(manual_cuentas, meses)"
+            "cargar_saldos_cuentas(manual_cuentas, meses), generar_cf(caja, ingresos, egresos)"
         );
         campo.setAttribute("value", 0.0);
         celda.appendChild(campo);
@@ -169,7 +169,7 @@ function cargar_ppto() {
             'update_totals("' +
               filas[i].id +
               '"), ' +
-              "cargar_saldos_cuentas(manual_cuentas, meses)"
+              "cargar_saldos_cuentas(manual_cuentas, meses), generar_cf(caja,ingresos,egresos)"
           );
           celda.appendChild(campo);
           filas[i].appendChild(celda);
@@ -181,6 +181,7 @@ function cargar_ppto() {
       update_totals(filas[i].id);
     }
   }
+  generar_cf(caja, ingresos, egresos);
 }
 
 //Cargar saldos a cuentas
@@ -226,7 +227,6 @@ function generar_cf(caja, ingresos, egresos) {
       saldos[t] -= s_egresos[t];
     }
   }
-  console.log("saldos al final: ", saldos);
   // Ingresar los valores en el cf
   for (i = 0; i < s_ingresos.length; i++) {
     let celda = document.getElementById("ingresos_mes_" + i);
@@ -244,4 +244,18 @@ function generar_cf(caja, ingresos, egresos) {
       inicial.innerHTML = saldos[f];
     }
   }
+
+  /*
+  // Saldos negativos en rojo
+  let e_saldos = document.querySelectorAll(".saldo");
+  parseFloat(e_saldos[0].value) < 0
+    ? e_saldos[0].setAttribute("class", "negativo")
+    : {};
+  for (i = 1; i < e_saldos.length; i++) {
+    parseFloat(e_saldos[i].innerHTML) < 0
+      ? e_saldos[i].setAttribute("class", "negativo")
+      : {};
+  }
+  let e_saldos = document.querySelectorAll(".negativo");
+*/
 }

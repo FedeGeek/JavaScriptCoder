@@ -22,3 +22,6 @@ table#t_cf{
     padding: none;
     margin: none;
 }
+.negativo{
+    color : red;
+}
