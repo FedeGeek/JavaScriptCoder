@@ -199,49 +199,49 @@ function generar_manual_cuentas(manual_cuentas, array) {
 //Generar Flujo de caja
 function generar_cf(caja, ingresos, egresos) {
   // declarar e inicializar los arrays
-  console.log(caja, ingresos, egresos);
   let s_ingresos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   let s_egresos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   let saldos = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   // Generación ingresos
   for (j = 0; j < s_ingresos.length; j++) {
     for (k = 0; k < ingresos.length; k++) {
-      s_ingresos[j] = +ingresos[k].saldos_mensuales[j];
+      s_ingresos[j] += ingresos[k].saldos_mensuales[j];
     }
   }
-  console.log(s_ingresos);
   // Generación egresos
   for (n = 0; n < s_egresos.length; n++) {
     for (m = 0; m < egresos.length; m++) {
-      s_egresos[n] = +egresos[m].saldos_mensuales[n];
+      s_egresos[n] += egresos[m].saldos_mensuales[n];
     }
   }
   // Generación de saldos
   for (t = 0; t < saldos.length; t++) {
-    t == 0
-      ? (saldos[t] =
-          parseFloat(caja.saldo_inicial) +
-          parseFloat(s_ingresos[t]) -
-          parseFloat(s_egresos[t]))
-      : parseFloat(saldos[t - 1]) +
-        parseFloat(s_ingresos[t]) -
-        parseFloat(s_egresos[t]);
-    // Ingresar los valores en el cf
-    for (i = 0; i < s_ingresos.length; i++) {
-      let celda = document.getElementById("ingresos_mes_" + i);
-      celda.innerHTML = s_ingresos[i];
+    if (t == 0) {
+      saldos[t] = caja.saldo_inicial;
+      saldos[t] += parseFloat(s_ingresos[t]);
+      saldos[t] -= s_egresos[t];
+    } else {
+      saldos[t] = saldos[t - 1];
+      saldos[t] += s_ingresos[t];
+      saldos[t] -= s_egresos[t];
     }
-    for (e = 0; e < s_egresos.length; e++) {
-      let celda = document.getElementById("egresos_mes_" + e);
-      celda.innerHTML = s_egresos[e];
-    }
-    for (f = 0; f < saldos.length; f++) {
-      let celda = document.getElementById("saldos_mes_" + f);
-      celda.innerHTML = saldos[f];
-      if (f < saldos.length - 1) {
-        let inicial = document.getElementById("caja_inicial_" + (f + 1));
-        inicial.innerHTML = saldos[f];
-      }
+  }
+  console.log("saldos al final: ", saldos);
+  // Ingresar los valores en el cf
+  for (i = 0; i < s_ingresos.length; i++) {
+    let celda = document.getElementById("ingresos_mes_" + i);
+    celda.innerHTML = s_ingresos[i];
+  }
+  for (e = 0; e < s_egresos.length; e++) {
+    let celda = document.getElementById("egresos_mes_" + e);
+    celda.innerHTML = s_egresos[e];
+  }
+  for (f = 0; f < saldos.length; f++) {
+    let celda = document.getElementById("saldos_mes_" + f);
+    celda.innerHTML = saldos[f];
+    if (f < saldos.length - 1) {
+      let inicial = document.getElementById("caja_inicial_" + (f + 1));
+      inicial.innerHTML = saldos[f];
     }
   }
 }
