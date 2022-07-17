@@ -1,5 +1,10 @@
 class Cuenta {
-  constructor(nombre_cuenta, ingresos, saldo_final = 0, saldos_mensuales = []) {
+  constructor(
+    nombre_cuenta,
+    ingresos,
+    saldo_final = 0,
+    saldos_mensuales = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+  ) {
     this.nombre_cuenta = nombre_cuenta;
     this.ingresos = ingresos;
     this.saldo_final = saldo_final;
@@ -8,9 +13,11 @@ class Cuenta {
 
   _cargar_saldos(meses) {
     for (let i = 0; i < meses.length; i++) {
-      this.saldos_mensuales[i] = document.getElementById(
-        "saldo_" + this.nombre_cuenta + "_ppto_mes_" + i
-      ).value;
+      this.saldos_mensuales[i] = parseFloat(
+        document.getElementById(
+          "saldo_" + this.nombre_cuenta + "_ppto_mes_" + i
+        ).value
+      );
       this.saldo_final += this.saldos_mensuales[i];
     }
   }

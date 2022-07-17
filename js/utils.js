@@ -41,17 +41,19 @@ function cargar_cuentas_ppto(cuentas) {
         campo.setAttribute("id", "saldo_" + fila.id + "_" + columnas[j].id);
         campo.setAttribute("type", "number");
         campo.setAttribute("rows", 1);
-        campo.setAttribute("onchange", 'update_totals("' + fila.id + '")');
+        campo.setAttribute(
+          "onchange",
+          'update_totals("' +
+            fila.id +
+            '"), ' +
+            "cargar_saldos_cuentas(manual_cuentas, meses)"
+        );
         campo.setAttribute("value", 0.0);
         celda.appendChild(campo);
         fila.appendChild(celda);
       } else {
         fila.appendChild(celda);
         celda.setAttribute("id", "Total_" + fila.id);
-        celda.setAttribute(
-          "onchange",
-          "cargar_saldos_cuentas(manual_cuentas,meses)"
-        );
       }
     }
   }
@@ -82,8 +84,6 @@ function guardar_saldos(nombreCuenta) {
   let meses = document.getElementById("tr_meses");
   let montos = [];
   let saldos = {};
-  //let nombre_cuenta = fila.children[0].innerHTML;
-  //saldos['Cuenta'] = nombre_cuenta
   for (let i = 1; i < fila.children.length - 1; i++) {
     montos.push(fila.children[i].firstChild.value);
   }
@@ -160,20 +160,19 @@ function cargar_ppto() {
           );
           campo.setAttribute("type", "number");
           campo.setAttribute("rows", 1);
+          campo.setAttribute("value", saldos[mes]);
           campo.setAttribute(
             "onchange",
-            'update_totals("' + filas[i].id + '")'
+            'update_totals("' +
+              fila.id +
+              '"), ' +
+              "cargar_saldos_cuentas(manual_cuentas, meses)"
           );
-          campo.setAttribute("value", saldos[mes]);
           celda.appendChild(campo);
           filas[i].appendChild(celda);
         } else {
           filas[i].appendChild(celda);
           celda.setAttribute("id", "Total_" + filas[i].id);
-          celda.setAttribute(
-            "onchange",
-            "cargar_saldos_cuentas(manual_cuentas,meses)"
-          );
         }
       }
       update_totals(filas[i].id);
@@ -181,7 +180,7 @@ function cargar_ppto() {
   }
 }
 
-//Cargar saldos a cuentas --> Revisar
+//Cargar saldos a cuentas
 function cargar_saldos_cuentas(manual_cuentas, meses) {
   for (let i = 0; i < manual_cuentas.length; i++) {
     manual_cuentas[i]._cargar_saldos(meses);
