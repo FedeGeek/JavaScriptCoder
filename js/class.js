@@ -8,16 +8,9 @@ class Cuenta {
 
   _cargar_saldos(meses) {
     for (let i = 0; i < meses.length; i++) {
-      do {
-        this.saldos_mensuales[i] = parseFloat(
-          prompt(
-            "Por favor, indica el saldo total de la cuenta " +
-              this.nombre_cuenta +
-              " para el mes de " +
-              meses[i]
-          )
-        );
-      } while (isNaN(this.saldos_mensuales[i]));
+      this.saldos_mensuales[i] = document.getElementById(
+        "saldo_" + this.nombre_cuenta + "_ppto_mes_" + i
+      ).value;
       this.saldo_final += this.saldos_mensuales[i];
     }
   }
@@ -61,4 +54,3 @@ class Caja {
     }
   }
 }
-
