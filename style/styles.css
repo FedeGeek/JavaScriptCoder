@@ -14,17 +14,11 @@ input{
     border:none;
 }
 td{
-    width: fit-content;
     border:1px solid;
 }
-table#t_caja_inicial{
-    width: 20%;
-    white-space: nowrap;
+table#t_cf{
+    width: 90%;
+    white-space:nowrap;
     padding: none;
     margin: none;
-    border-bottom: 1px solid black;
-    text-align: center;
-}
-table#t_caja_inicial td input{
-    text-align: center;
 }

@@ -12,20 +12,7 @@
 <body>
     <h1>Presupuestador Anual</h1>
     <br>
-    <div id="d_caja">
-        <h3>Patrimonio inicial</h3>
-        <table class="table table-borderless" id="t_caja_inicial">
-            <tbody>
-                <tr>
-                    <td>Caja inicial</td>
-                    <td>
-                        <input type="number" id="saldo_inicial_caja" cols="10" rows="1" placeholder="efectivo inicial" onchange="caja._cargar_saldo_inicial()"></input>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-    <div id="ppto">
+   <div id="ppto">
         <h4>Mes inicial </h4>
         <select name="ppto_mes_0" class="btn btn-secondary" id="mes_inicial" onchange="update_headers(), cargar_cuentas_ppto(manual_cuentas)" style="width: 150px">
             <option>Seleccionar</option>
@@ -44,15 +31,46 @@
         <button class="btn btn-success" onclick="guardar_ppto(manual_cuentas)">Guardar Presupuesto</button>
         <button class="btn btn-success" onclick="cargar_ppto()">Cargar Presupuesto guardado</button>
     </div>
-    <div id="cashflow">
+    <br>
+    <br>
+     <div id="cashflow">
         <table class="table table-bordered" id="t_cf">
             <thead>
                 <tr id="cf_meses">
                     <td></td>
+                    <td id="cf_mes_0"></td>
+                    <td id="cf_mes_1"></td>
+                    <td id="cf_mes_2"></td>
+                    <td id="cf_mes_3"></td>
+                    <td id="cf_mes_4"></td>
+                    <td id="cf_mes_5"></td>
+                    <td id="cf_mes_6"></td>
+                    <td id="cf_mes_7"></td>
+                    <td id="cf_mes_8"></td>
+                    <td id="cf_mes_9"></td>
+                    <td id="cf_mes_10"></td>
+                    <td id="cf_mes_11"></td>
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr id="cf_Caja_inicial">
+                    <td>Caja inicial</td>
+                    <td id="caja_inicial_0">
+                        <input type="number" id="saldo_inicial_caja" cols="10" rows="1" placeholder="efectivo inicial" onchange="caja._cargar_saldo_inicial()"></input>
+                    </td>
+                    <td id="caja_inicial_1"></td>
+                    <td id="caja_inicial_2"></td>
+                    <td id="caja_inicial_3"></td>
+                    <td id="caja_inicial_4"></td>
+                    <td id="caja_inicial_5"></td>
+                    <td id="caja_inicial_6"></td>
+                    <td id="caja_inicial_7"></td>
+                    <td id="caja_inicial_8"></td>
+                    <td id="caja_inicial_9"></td>
+                    <td id="caja_inicial_10"></td>
+                    <td id="caja_inicial_11"></td>
+                </tr>
+                 <tr id="cf_ingresos">
                     <td>Ingresos</td>
                     <td id="ingresos_mes_0"></td>
                     <td id="ingresos_mes_1"></td>
@@ -67,7 +85,7 @@
                     <td id="ingresos_mes_10"></td>
                     <td id="ingresos_mes_11"></td>
                 </tr>
-                <tr>
+                <tr id="cf_egresos">
                     <td>Egresos</td>
                     <td id="egresos_mes_0"></td>
                     <td id="egresos_mes_1"></td>
@@ -82,8 +100,8 @@
                     <td id="egresos_mes_10"></td>
                     <td id="egresos_mes_11"></td>
                 </tr>
-                <tr>
-                    <td>Saldos</td>
+                <tr id="cf_saldos">
+                    <td>Caja final</td>
                     <td id="saldos_mes_0"></td>
                     <td id="saldos_mes_1"></td>
                     <td id="saldos_mes_2"></td>
