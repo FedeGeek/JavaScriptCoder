@@ -127,10 +127,12 @@ function cargar_ppto() {
   );
   let ppto = localStorage.getItem(nombre_ppto);
   if (ppto == null) {
-    swal(
-      "El presupuesto solicitado no se encuentra almacenado, por favor, intente nuevamente"
+    let confirmation = confirm(
+      "El presupuesto solicitado no se encuentra almacenado. ¿Intentar de nuevo?"
     );
-    cargar_ppto();
+    if (confirmation) {
+      cargar_ppto();
+    }
   } else {
     ppto = JSON.parse(ppto);
     let cuentas = Object.keys(ppto);
