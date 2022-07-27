@@ -1,4 +1,4 @@
-const versionApp = "Alpha 0.5";
+const versionApp = "Alpha 0.6";
 const meses = [
   "Enero",
   "Febrero",
@@ -18,6 +18,9 @@ swal(
   "Bienvenid@ al presupuestador online, Version " + versionApp,
   "Este programa te permite proyectar los movimientos financieros de tu emprendimiento, para visualizar con facilidad la proyección de tus ganancias, y el cashflow"
 );
+
+const iVersion = document.getElementById("Version");
+iVersion.innerHTML = "Version: " + versionApp;
 
 //Asignación de meses en ppto
 const mes_inicial = document.getElementById("mes_inicial");

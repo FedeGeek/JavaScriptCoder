@@ -244,8 +244,23 @@ function generar_cf(caja, ingresos, egresos) {
       inicial.innerHTML = saldos[f];
     }
   }
+}
 
-  /*
+// Reinicio de plantilla
+function restart_CF() {
+  let encabezados = document.getElementById("tr_meses").children;
+  let body = document.getElementById("body_ppto").children;
+  if (body.length != 0) {
+    for (i = 1; i < encabezados.length; i++) {
+      encabezados[i].innerHTML = "";
+    }
+    do {
+      body[0].remove();
+    } while (body.length > 0);
+  }
+}
+
+/*
   // Saldos negativos en rojo
   let e_saldos = document.querySelectorAll(".saldo");
   parseFloat(e_saldos[0].value) < 0
@@ -258,4 +273,3 @@ function generar_cf(caja, ingresos, egresos) {
   }
   let e_saldos = document.querySelectorAll(".negativo");
 */
-}

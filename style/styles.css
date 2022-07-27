@@ -22,11 +22,12 @@ table#t_cf{
     padding: none;
     margin: none;
 }
-table#t_banco{
+table#t_bancos{
     width: 90%;
     white-space:nowrap;
     padding: none;
     margin: none;
+    text-align: center;
 }
 .negativo{
     color : red;

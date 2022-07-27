@@ -11,6 +11,7 @@
 </head>
 <body>
     <h1>Presupuestador Anual</h1>
+    <h5 id="Version"></h5>
     <br>
    <div id="ppto">
         <h4>Mes inicial </h4>
@@ -29,11 +30,12 @@
     </div>
     <div>
         <button class="btn btn-success" onclick="guardar_ppto(manual_cuentas)">Guardar Presupuesto</button>
-                <button class="btn btn-success" onclick="cargar_ppto(), cargar_saldos_cuentas(manual_cuentas, meses), generar_cf(caja, ingresos, egresos)">Cargar Presupuesto guardado</button>
+        <button class="btn btn-success" onclick="restart_CF(), cargar_ppto(), cargar_saldos_cuentas(manual_cuentas, meses), generar_cf(caja, ingresos, egresos)">Cargar Presupuesto guardado</button>
     </div>
     <br>
     <br>
      <div id="cashflow">
+         <h2>Flujo de caja</h2>
         <table class="table table-bordered" id="t_cf">
             <thead>
                 <tr id="cf_meses">
